@@ -20,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Swarm Ruby comes with both a client, for initializing and exchanging data with the Swarm API, and a Railties initializer that will 
+inject the Swarm API client library on whichever pages you select. 
 
 ## Development
 
