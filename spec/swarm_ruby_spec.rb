@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Swarm Client" do
   context "initialization" do 
     it 'fails when initialized without api key or username' do
+      Swarm.new
     end
   end
 
