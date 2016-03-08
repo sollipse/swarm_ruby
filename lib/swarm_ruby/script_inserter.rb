@@ -1,21 +1,29 @@
 module Swarm
   module ScriptInserter
-    BODY_TAG = %r{</body>}
-
-    JS_SCRIPT = %q{
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
-      <script>
-        alert("loaded")
-      </script>    
-    }
-
+    
     def insert_swarm
+      body_tag = %r{</body>}
+
+      js_script = %Q(
+        <script type='text/javascript' src='https://d291gmt65i2gs5.cloudfront.net/swarm.js'
+          async='1'
+          id='swarm-script'
+          data-customer-id=#{ENV['SWARM_JS_TOKEN']}
+          > 
+        </script>
+        <script>
+          console.log('loaded')
+        </script>
+        <img src="https://www.hnyhnyhny.com/api/v1/impression-pixel?l=hw7OR0XdAJjteQLk"/>
+      )
+
       if (
         response.content_type == 'text/html' &&
-        response.body.match(BODY_TAG)
+        response.body.match(body_tag)
       )
-        response.body = response.body.gsub(BODY_TAG, JS_SCRIPT + '\\0')
-      end      
+        response.body = response.body.gsub(body_tag, js_script + '\\0')
+      end
+      puts Swarm.configuration.inspect
     end
   end
 end
