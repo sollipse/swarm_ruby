@@ -1,3 +1,5 @@
+require 'faraday'
+
 module Swarm
   class Client
       # Base url for 

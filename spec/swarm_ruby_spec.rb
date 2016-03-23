@@ -5,7 +5,8 @@ describe "Swarm Client" do
   context "configuration" do
     before do
       Swarm.configure do |config|
-        config.SWARM_JS_TOKEN = '1234'
+        puts ENV.inspect
+        config.SWARM_JS_TOKEN = "1234"
       end
     end
 
@@ -17,7 +18,10 @@ describe "Swarm Client" do
 
   context "client initialization" do 
     it 'fails when initialized without api key or username' do
-      Swarm::Client.new
+      client = Swarm::Client.new('asdfadsfadsfsadf', 'asdfasdfasdfafs')
+      b = client.resolve_user '1244'
+      binding.pry
+      JSON.parse b.body
     end
   end
 

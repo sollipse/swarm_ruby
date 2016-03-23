@@ -1,8 +1,7 @@
 require "swarm_ruby/version"
 require "swarm_ruby/configuration"
 require "swarm_ruby/client"
-require 'swarm_ruby/rails' if defined?(Rails)
-require 'swarm_ruby/railtie' if defined?(::Rails::Railtie)
+require "swarm_ruby/tracker"
 
 module Swarm
   class << self
